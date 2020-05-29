@@ -80,9 +80,8 @@ def particle_evolve(energy_edges, energy_loss_rate, tloss_discrete, source, n_i,
 
 def get_dt(energies, loss_rate_cen, tloss_discrete, source, n_i):
 	'''
-	Evolve a particle distribution for one time step. any units allowed as
-	long as all energy and time units are consistent. Using a TDMA solver to evolve
-	the distribution following the method of Chiaberge & Chisellini 1999.
+	Calculate a time step. Units consistent with
+	tloss_discrete and energy_loss_rate
 
 	Parameters:
 		energy_edges 		array-like
@@ -100,9 +99,6 @@ def get_dt(energies, loss_rate_cen, tloss_discrete, source, n_i):
 		n_i 				array-like
 							len (N-1) array holding initial state
 
-		dt 					float
-							time-step, needs to have consistent units with
-							tloss_discrete and energy_loss_rate
 
 	Returns:
 		n_iplusone 			array-like
