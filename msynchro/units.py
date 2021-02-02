@@ -21,7 +21,7 @@ class units:
         self.ev = 1.602192e-12  # electron volts in CGS
         self.kb = 1.38062e-16   # boltzmann 
         self.h = 6.6262e-27     # plank 
-        self.hbar = self.h / np.pi / np.pi      
+        self.hbar = self.h / 2.0 / np.pi      
         self.g = 6.670e-8       # gravitational 
         self.hbar_c = self.hbar * self.c
         self.alpha = self.e * self.e / self.hbar_c

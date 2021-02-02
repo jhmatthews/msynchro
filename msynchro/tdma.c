@@ -78,11 +78,6 @@ TDMASolver (PyObject * self, PyObject * args)
   free (dcnew);
   Py_INCREF (out_array);
   return Py_BuildValue("O", out_array);
-
-  /*  in case bad things happen */
-  // fail:
-  //   Py_XDECREF (out_array);
-  // return NULL;
 }
 
 /* Create 1D Carray from PyArray
@@ -95,13 +90,6 @@ pyvector_to_Carrayptrs (PyArrayObject * arrayin)
   n = arrayin->dimensions[0];
   return (double *) arrayin->data;  /* pointer to arrayin data as double */
 }
-
-
-
-
-
-
-
 
 
 /* Python interfacing stuff */
