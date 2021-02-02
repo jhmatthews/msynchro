@@ -2,11 +2,15 @@
 
 Routines for calculating synchrotron emission from a population of electrons (under certain assumptions). Also includes a tridiagonal matrix (TDM) algorithm for evolving particle distributions. The TDM algorithm is compiled as a C extension. 
 
+### Docs 
+
+Documentation is hosted on [ReadTheDocs](msynchro.readthedocs.io)
+
 ### Prerequisites
 
 The code requires numpy, scipy and a working C compiler.
 
-### Install
+### Installation
 
 Typing
 
