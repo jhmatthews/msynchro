@@ -21,13 +21,27 @@ project = 'msynchro'
 copyright = '2021, James Matthews'
 author = 'James Matthews'
 
+# == Options for the varous plugins =======================================
+# -- Whether or not to include ToDo notes ---------------------------------
+todo_include_todos = True
+# -- GitHub repo for issues -----------------------------------------------
+issues_github_path = "agnwinds/python"
+
 
 # -- General configuration ---------------------------------------------------
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
+extensions = ['sphinx.ext.mathjax',
+    'sphinx.ext.ifconfig',
+    'sphinx.ext.githubpages',
+    'sphinx.ext.todo',
+    'sphinx.ext.autosectionlabel',
+    'sphinx_issues',
+	'nbsphinx',
+	'IPython.sphinxext.ipython_console_highlighting',
+    # 'sphinx.ext.autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -97,4 +111,4 @@ html_sidebars = {
         'donate.html',
     ]
 }
-
+source_suffix = ['.rst', '.ipynb']

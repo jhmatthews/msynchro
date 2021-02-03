@@ -101,9 +101,10 @@ def run_powerlaw_test():
 
         while time < tmax:
 
-            minimum_ne = 1e-100
-            select = (ne > minimum_ne)
-            ne[~select] = 0.0
+            minimum_ne = 1e-50
+            select = (ne/np.nanmax(ne) > minimum_ne)
+            if np.sum(select == False) > 0:
+                ne[~select] = 0.0
             dndt = ne[select] / Ebins[select] * loss_rate_cen[select]
             delta_t = 0.4 * np.min(ne[select] / dndt)
             ne = msynchro.evolve.particle_evolve(energy_edges, energy_loss_rate, 0.0, 0.0, ne, delta_t)
@@ -120,7 +121,7 @@ def run_powerlaw_test():
 
     plt.legend()
     plt.title("Analytic (solid) v TDMA (dashed)")
-    plt.ylabel("$dn/dE(t) / dn/dE(t_0)$", fontsize=14)
+    plt.ylabel("$n(E,t) / n(E,t_0)$", fontsize=14)
     plt.xlabel("$E$ (eV)", fontsize=14)
     plt.ylim(1e-3,1e3)
     plt.xlim(1e9,1e12)
@@ -147,6 +148,8 @@ def run_delta_test():
     # energy centres and bin sizes
     energies = 0.5 * (E1s + E2s)
     Ebins = E2s - E1s
+
+    print ((9-1) / 10000)
 
     # times 
     delta_t = 0.01 * unit.myr 
@@ -175,9 +178,10 @@ def run_delta_test():
             plt.loglog(energies / E_inject, ne, drawstyle="steps")
             iwrite+=1
 
-        minimum_ne = 1e-50
+        minimum_ne = 1e-100
         select = (ne > minimum_ne)
-        ne[~select] = 0.0
+        if np.sum(select == False) > 0:
+            ne[~select] = 0.0
         dndt = ne[select] / Ebins[select] * loss_rate_cen[select]
 
         # two possible choices for delta_t 
@@ -219,7 +223,7 @@ def run_delta_test():
     plt.ylim(1e-3,1)
     plt.xlim(1e-2,2)
     plt.xlabel("$E / E_0$")
-    plt.ylabel("$dN/dE$")
+    plt.ylabel("$n(E)$")
     plt.savefig("delta_test.png")
 
 if __name__ == "__main__":
