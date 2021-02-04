@@ -4,7 +4,7 @@ Routines for calculating synchrotron emission from a population of electrons (un
 
 ### Docs 
 
-Documentation is hosted on [ReadTheDocs](msynchro.readthedocs.io)
+Documentation is hosted on [ReadTheDocs](https://msynchro.readthedocs.io/)
 
 ### Prerequisites
 
@@ -20,6 +20,6 @@ python setup.py install
 
 should install msynchro as a module. You can then import it as usual.
 
-### Using the code
+### Using the code
 
-If you use this code, please cite the corresponding paper.
+If you use this code, please cite the corresponding paper, [Matthews \& Taylor 2021]()
