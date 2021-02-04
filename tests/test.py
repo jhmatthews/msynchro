@@ -178,7 +178,7 @@ def run_delta_test():
             plt.loglog(energies / E_inject, ne, drawstyle="steps")
             iwrite+=1
 
-        minimum_ne = 1e-100
+        minimum_ne = 1e-50
         select = (ne > minimum_ne)
         if np.sum(select == False) > 0:
             ne[~select] = 0.0
@@ -186,6 +186,7 @@ def run_delta_test():
 
         # two possible choices for delta_t 
         delta_t = 0.4 * np.min(ne[select] / dndt)
+        #delta_t =msynchro.get_dt(energies, loss_rate_cen, tloss_discrete, 0.0, ne)
         #delta_t = 0.4 * np.min(Ebins[select] / loss_rate_cen[select])
 
         # evolve particle distribution 

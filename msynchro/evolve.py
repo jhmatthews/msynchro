@@ -78,7 +78,7 @@ def particle_evolve(energy_edges, energy_loss_rate, tloss_discrete, source, n_i,
 	return (n_iplusone)
 
 
-def get_dt(energies, loss_rate_cen, tloss_discrete, source, n_i):
+def get_dt(energies, loss_rate_cen, tloss_discrete, source, n_i, relative_threshold=1e-20):
 	'''
 	Calculate a time step. Units consistent with
 	tloss_discrete and energy_loss_rate
@@ -108,7 +108,7 @@ def get_dt(energies, loss_rate_cen, tloss_discrete, source, n_i):
 	if np.all(n_i == 0.0):
 		return (0.0)
 
-	minimum_n_i = np.max(n_i) * 1e-15
+	minimum_n_i = np.max(n_i) * relative_threshold
 	#print (np.max(n_i), minimum_n_i)
 	select = (n_i > minimum_n_i)
 
