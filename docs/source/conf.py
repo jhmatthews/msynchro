@@ -27,6 +27,8 @@ todo_include_todos = True
 # -- GitHub repo for issues -----------------------------------------------
 issues_github_path = "agnwinds/python"
 
+import os
+import sys
 
 # -- General configuration ---------------------------------------------------
 
@@ -41,7 +43,7 @@ extensions = ['sphinx.ext.mathjax',
     'sphinx_issues',
 	'nbsphinx',
 	'IPython.sphinxext.ipython_console_highlighting',
-    # 'sphinx.ext.autodoc',
+    'sphinx.ext.autodoc',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
