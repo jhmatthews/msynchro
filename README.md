@@ -4,7 +4,9 @@ Routines for calculating synchrotron emission from a population of electrons (un
 
 ### Docs 
 
-Documentation is hosted on [ReadTheDocs](https://msynchro.readthedocs.io/)
+Documentation is hosted on [ReadTheDocs](https://msynchro.readthedocs.io/).
+
+[![Documentation Status](https://readthedocs.org/projects/msynchro/badge/?version=latest)](https://msynchro.readthedocs.io/en/latest/?badge=latest)
 
 ### Prerequisites
 
