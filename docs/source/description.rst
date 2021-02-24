@@ -5,7 +5,7 @@ msynchro is a simple python package that allows calculation of optically thin sy
 
 Tridiagonal matrix algorithm
 ================================================
-The TDM algorithm is used to solve a continuity equation of the form. This discussion broadly follows that given by `Chiaberge and Ghisellini (1999) <https://ui.adsabs.harvard.edu/abs/1999MNRAS.306..551C/abstract>`_.  The algorithm is intended to solve equations of the following form
+The TDM algorithm is used to solve a continuity equation of the form. This discussion broadly follows that given by `Chiaberge & Ghisellini (1999) <https://ui.adsabs.harvard.edu/abs/1999MNRAS.306..551C/abstract>`_ -- see also `Chang & Cooper (1970) <https://ui.adsabs.harvard.edu/abs/1970JCoPh...6....1C/abstract>`_.  The algorithm is intended to solve equations of the following form
 
 .. math::
 
