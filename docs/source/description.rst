@@ -1,7 +1,7 @@
 Description
 --------------------------------------
 
-msynchro is a simple python package that allows calculation of optically thin synchrotron emission from arbitrary electron distributions. It also include a tridiagonal matrix algorithm for evolving distributions of particles subject to cooling. This page contains a brief description of the main methods.
+``msynchro`` is a simple python package that allows calculation of optically thin synchrotron emission from arbitrary electron distributions. It also include a tridiagonal matrix algorithm for evolving distributions of particles subject to cooling. This page contains a brief description of the main methods.
 
 Tridiagonal matrix algorithm
 ================================================

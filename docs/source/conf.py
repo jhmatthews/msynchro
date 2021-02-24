@@ -25,10 +25,13 @@ author = 'James Matthews'
 # -- Whether or not to include ToDo notes ---------------------------------
 todo_include_todos = True
 # -- GitHub repo for issues -----------------------------------------------
-issues_github_path = "agnwinds/python"
+issues_github_path = "jhmatthews/msynchro"
 
 import os
 import sys
+
+
+#sys.path.insert(0, '../../msynchro/')
 
 # -- General configuration ---------------------------------------------------
 
