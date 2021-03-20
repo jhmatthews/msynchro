@@ -2,7 +2,35 @@ import numpy as np
 class units:
     '''
     class containing some units. Should probably use astropy units 
-    but I find them a bit annoying.
+    but I find them a bit annoying. Example to get the rest mass energy
+    of an electron in eV would be
+
+        from msynchro.units import unit 
+        E = unit.melec_csq / unit.ev
+
+    Includes the following quantities in CGS units:
+
+    kpc         1 kiloparsec 
+    pc          1 parsec
+    c           speed of light in vacuum
+    yr          1 year
+    myr         1 Megayear
+    kyr         1 kyr
+    radian      degrees in 1 radian
+    msol        solar mass
+    mprot       proton mass
+    melec       electron mass
+    melec_csq   electron rest mass energy
+    mprot_csq   proton rest mass energy
+    e           fundamental charge 
+    ev          electron volt
+    kb          boltzmann constant
+    h           plank constant 
+    hbar        reduced plank constant (h/2pi)
+    g           gravitational constant G
+    hbar_c      hbar * c
+    alpha       fine structure constant
+    thomson     Thomson cross section
     '''
     def __init__(self):
         self.kpc = 3.086e21

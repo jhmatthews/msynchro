@@ -78,6 +78,6 @@ emissivity averaged over an isotropic distribution of pitch angles, given by
 	&  \times & \left\{K_{4/3}(t) \, K_{1/3}(t)- \frac{3}{5} t \, 
 	 [K_{4/3}^{2}(t)-K_{1/3}^{2}(t)] \right\}
 
-where :math:`t=\nu/(3\gamma^2\nu_B)`, :math:`\nu_B = e B/(2\pi m_e c)`, and the :math:`K` quantities are the usual modified Bessel functions.
+where :math:`t=\nu/(3\gamma^2\nu_B)`, :math:`\nu_B = e B/(2\pi m_e c)` is the gyrofrequency or cyclotron frequency, and the :math:`K` quantities are the usual modified Bessel functions.
 
 .. todo:: write description.

@@ -7,6 +7,8 @@ from msynchro.units import unit
 class lookup:
     """
     DEPRECATED: wrapper for F(X) lookup table
+
+    :meta private:
     """
 
     def __init__(self, load=True, fname="Fxlookup.npy"):
@@ -29,8 +31,9 @@ class lookup:
 
 def fx_approximation(x):
     """
-    DEPRECATED: wrapper for F(X) lookup table
-    An approximate form of F(x) as given by Aharonian et al.,
+    DEPRECATED: An approximate form of F(x) as given by Aharonian et al.,
+
+    :meta private:
     """
     f = 2.15 * (x ** (1.0 / 3.0))
     f *= (1 + 3.06 * x) ** (1.0 / 6.0)
@@ -52,6 +55,8 @@ def F(x):
     Parameters:
         x       float
                 nu/nu_c, frequency normalised to critical frequency
+
+    :meta private:
     """
 
     # at large x, return eq 6.34b from Rybicki and Lightman (could perhaps use this earlier)
@@ -65,13 +70,39 @@ def F(x):
     return answer
 
 
-# def nu_crit(B, gamma):
-#     '''
-#     Get the critical frequency of an electron with
-#     Lorentz factor gamma in a magnetic field B, in microGauss
-#     '''
-#     nu_c = 3.0 * gammas[i] * gammas[i] * unit.e * Bfield / unit.melec / unit.c / 2.0 * sinalpha / 2.0 / np.pi
+def nu_crit(gamma, B):
+    '''
+    Calculate the critical frequency of a synchrotron electron
 
+    Parameters:
+        gamma       array-like, float
+                    Lorentz factors of electrons
+
+        B           float
+                    magnetic field strength
+
+    Returns:
+        nu_c        float 
+                    critical frequency of a synchrotron electron in Hz
+    '''
+    nu_c = gamma * gamma * nu_cyclotron(B)
+    return (nu_c)
+
+def nu_cyclotron(B):
+    '''
+    Calculate the cyclotron frequency or gyrofrequency
+
+    Parameters:
+        B           float
+                    magnetic field strength
+
+    Returns:
+        nu          float 
+                    cyclotron frequency in Hz
+
+    '''
+    nu = unit.e * B / 2.0 / np.pi / unit.melec / unit.c
+    return (nu)
 
 def psynch(gamma, nu, B):
     """
@@ -105,9 +136,29 @@ def psynch(gamma, nu, B):
     return x * kterm
 
 
-def Ptot(nus, energies, ne, Bfield, lookup=None):
+def Ptot(nus, energies, ne, Bfield):
     """
-    get synchrotron spectrum for a given
+    Get synchrotron spectrum for a given set of frequencies 
+    from a differential spectrum of electrons ne=dN/dE.
+
+
+    Parameters:
+        nus         array-like
+                    frequencies in Hz
+
+        energies    array-like
+                    energies of electrons - units must match ne array
+
+        ne          array-like
+                    differential energy spectrum - units must match energies array
+
+        B           float
+                    magnetic field in Gauss
+
+    Returns:
+        Ptot        array-like
+                    synchrotron spectrum with same shape as 
+                    nus input array
     """
     # array to store spectrum
     pnu = np.zeros_like(nus)
@@ -124,9 +175,6 @@ def Ptot(nus, energies, ne, Bfield, lookup=None):
         power = psynch(gamma, nu, Bfield)
 
         # integrate over distribution
-        # power = psynch(energies, nu, Bfield, lookup = lookup)
-        # power = jsynch(energies, ncr, nus, Bfield, np.max(energies), len(energies))
-        # print (gamma, dn_by_dgamma, power)
         pnu[inu] = -np.trapz(gamma, dn_by_dgamma * power)
 
     return pnu
